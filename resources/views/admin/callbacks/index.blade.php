@@ -3,12 +3,13 @@
 @section('content')
     <div class="bg-white rounded-xl shadow-sm overflow-x-auto">
         <table class="w-full text-sm">
-            <thead class="bg-slate-50 text-left"><tr><th class="p-3">Thời điểm</th><th class="p-3">Điện thoại</th><th class="p-3">Nhu cầu</th><th class="p-3">Trạng thái</th><th class="p-3"></th></tr></thead>
+            <thead class="bg-slate-50 text-left"><tr><th class="p-3">Thời điểm</th><th class="p-3">Điện thoại</th><th class="p-3">Kênh</th><th class="p-3">Nhu cầu</th><th class="p-3">Trạng thái</th><th class="p-3"></th></tr></thead>
             <tbody>
                 @forelse($items as $item)
                     <tr class="border-t">
                         <td class="p-3 whitespace-nowrap">{{ $item->created_at->format('d/m/Y H:i') }}</td>
                         <td class="p-3 font-semibold">{{ $item->phone }}</td>
+                        <td class="p-3">{{ contact_channel_label($item->contact_channel) ?: '—' }}</td>
                         <td class="p-3">{{ $item->note ?: '—' }}</td>
                         <td class="p-3">
                             <form method="POST" action="{{ route('admin.callbacks.update', $item) }}">
@@ -28,7 +29,7 @@
                         </td>
                     </tr>
                 @empty
-                    <tr><td class="p-6 text-slate-500" colspan="5">Chưa có yêu cầu gọi lại.</td></tr>
+                    <tr><td class="p-6 text-slate-500" colspan="6">Chưa có yêu cầu gọi lại.</td></tr>
                 @endforelse
             </tbody>
         </table>

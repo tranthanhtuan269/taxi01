@@ -38,7 +38,7 @@
                         <span class="font-body-sm text-body-sm text-on-surface-variant">{{ setting('stat_3_label') }}</span>
                     </div>
                 </div>
-                <div class="flex items-center justify-between p-space-sm bg-surface-container rounded-xl">
+                <div class="flex flex-col gap-space-sm p-space-sm bg-surface-container rounded-xl">
                     <div class="flex items-center gap-space-sm">
                         <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-on-secondary shrink-0">
                             <span class="material-symbols-outlined text-[20px]">phone_in_talk</span>
@@ -48,7 +48,7 @@
                             <a class="font-headline-sm text-headline-sm text-primary hover:text-secondary transition-colors" href="tel:{{ setting('phone_tel') }}">{{ setting('phone_display') }}</a>
                         </div>
                     </div>
-                    <a class="px-space-sm py-space-xs bg-surface-container-lowest rounded-lg font-label-sm text-label-sm text-secondary hover:bg-secondary hover:text-on-secondary transition-colors shadow-sm" href="{{ setting('zalo_url') }}" target="_blank" rel="noopener">Chat Zalo</a>
+                    @include('partials.contact-links', ['variant' => 'hero'])
                 </div>
             </div>
             <div class="lg:col-span-7">

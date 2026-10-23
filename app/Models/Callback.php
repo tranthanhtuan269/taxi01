@@ -12,7 +12,7 @@ class Callback extends Model
         'closed' => 'Đã xong',
     ];
 
-    protected $fillable = ['phone', 'note', 'status'];
+    protected $fillable = ['phone', 'note', 'contact_channel', 'status'];
 
     public function statusLabel(): string
     {

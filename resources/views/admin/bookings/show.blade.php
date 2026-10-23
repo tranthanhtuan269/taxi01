@@ -6,10 +6,12 @@
             <div><dt class="text-slate-500">Dịch vụ</dt><dd class="font-semibold">{{ $booking->service_key }}</dd></div>
             <div><dt class="text-slate-500">Chiều</dt><dd class="font-semibold">{{ $booking->trip_mode === 'roundtrip' ? 'Khứ hồi' : 'Một chiều' }}</dd></div>
             <div class="col-span-2"><dt class="text-slate-500">Tuyến</dt><dd class="font-semibold">{{ $booking->pickup }} → {{ $booking->dropoff }}</dd></div>
-            <div><dt class="text-slate-500">Ngày đón</dt><dd class="font-semibold">{{ optional($booking->pickup_date)->format('d/m/Y') }} {{ $booking->pickup_time }}</dd></div>
+            <div><dt class="text-slate-500">Ngày đặt</dt><dd class="font-semibold">{{ optional($booking->pickup_date)->format('d/m/Y') }} {{ $booking->pickup_time }}</dd></div>
+            <div><dt class="text-slate-500">Số khách</dt><dd class="font-semibold">{{ $booking->passengers }}</dd></div>
             <div><dt class="text-slate-500">Chuyến bay</dt><dd class="font-semibold">{{ $booking->flight_number ?: '—' }}</dd></div>
             <div><dt class="text-slate-500">Xe</dt><dd class="font-semibold">{{ $booking->vehicle_name }}</dd></div>
             <div><dt class="text-slate-500">Điện thoại</dt><dd class="font-semibold">{{ $booking->phone }}</dd></div>
+            <div><dt class="text-slate-500">Kênh liên hệ</dt><dd class="font-semibold">{{ contact_channel_label($booking->contact_channel) ?: '—' }}</dd></div>
             <div><dt class="text-slate-500">Giá tạm tính</dt><dd class="font-semibold text-[#006398]">{{ money($booking->estimated_price) }}</dd></div>
         </dl>
         <form class="grid gap-3" method="POST" action="{{ route('admin.bookings.update', $booking) }}">

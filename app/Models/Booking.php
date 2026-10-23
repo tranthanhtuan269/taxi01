@@ -15,7 +15,7 @@ class Booking extends Model
 
     protected $fillable = [
         'service_key', 'trip_mode', 'pickup', 'dropoff', 'pickup_date', 'pickup_time',
-        'flight_number', 'vehicle_code', 'vehicle_name', 'phone', 'estimated_price',
+        'flight_number', 'vehicle_code', 'vehicle_name', 'phone', 'passengers', 'contact_channel', 'estimated_price',
         'status', 'admin_note',
     ];
 
@@ -24,6 +24,7 @@ class Booking extends Model
         return [
             'pickup_date' => 'date',
             'estimated_price' => 'integer',
+            'passengers' => 'integer',
         ];
     }
 

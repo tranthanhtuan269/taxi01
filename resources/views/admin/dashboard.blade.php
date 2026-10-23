@@ -26,7 +26,7 @@
                 @forelse($bookings as $booking)
                     <a class="block px-4 py-3 hover:bg-slate-50" href="{{ route('admin.bookings.show', $booking) }}">
                         <p class="font-semibold">{{ $booking->pickup }} → {{ $booking->dropoff }}</p>
-                        <p class="text-sm text-slate-500">{{ $booking->phone }} · {{ $booking->vehicle_name }} · {{ money($booking->estimated_price) }}</p>
+                        <p class="text-sm text-slate-500">{{ optional($booking->pickup_date)->format('d/m/Y') }} · {{ $booking->passengers }} khách · {{ $booking->phone }} · {{ contact_channel_label($booking->contact_channel) }} · {{ money($booking->estimated_price) }}</p>
                     </a>
                 @empty
                     <p class="px-4 py-6 text-sm text-slate-500">Chưa có đơn.</p>
@@ -39,7 +39,7 @@
                 @forelse($callbacks as $item)
                     <div class="px-4 py-3">
                         <p class="font-semibold">{{ $item->phone }}</p>
-                        <p class="text-sm text-slate-500">{{ $item->note ?: 'Không có ghi chú' }} · {{ $item->statusLabel() }}</p>
+                        <p class="text-sm text-slate-500">{{ contact_channel_label($item->contact_channel) ?: 'Chưa chọn kênh' }} · {{ $item->note ?: 'Không có ghi chú' }} · {{ $item->statusLabel() }}</p>
                     </div>
                 @empty
                     <p class="px-4 py-6 text-sm text-slate-500">Chưa có yêu cầu.</p>

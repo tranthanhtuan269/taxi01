@@ -41,10 +41,9 @@
                 <span class="material-symbols-outlined text-secondary text-[18px]">call</span>
                 <span class="font-label-sm text-label-sm text-on-surface font-bold">{{ setting('phone_display') }}</span>
             </a>
-            <a class="hidden sm:flex items-center gap-space-xs bg-surface-container-high hover:bg-surface-container-highest px-space-sm py-space-xs rounded-full transition-colors" href="{{ setting('zalo_url') }}" target="_blank" rel="noopener">
-                <span class="material-symbols-outlined text-secondary text-[18px]">chat</span>
-                <span class="font-label-sm text-label-sm text-on-surface">Zalo 24/7</span>
-            </a>
+            <div class="hidden xl:block">
+                @include('partials.contact-links', ['variant' => 'header'])
+            </div>
             <a class="inline-flex items-center justify-center bg-tertiary-fixed hover:bg-tertiary-fixed-dim text-on-tertiary-fixed font-label-md text-label-md px-space-md py-space-sm rounded-lg transition-colors shadow-sm font-bold" href="{{ route('booking') }}">Đặt xe ngay</a>
             <a class="w-8 h-8 rounded-full bg-primary flex items-center justify-center" href="{{ route('admin.login') }}" title="Quản trị">
                 <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
@@ -60,6 +59,7 @@
                 <a class="px-space-sm py-space-sm rounded-lg font-label-md text-label-md {{ request()->routeIs($item['route']) ? 'bg-surface-container-high text-primary' : 'text-on-surface' }}" href="{{ route($item['route']) }}">{{ $item['label'] }}</a>
             @endforeach
             <a class="px-space-sm py-space-sm font-label-md text-label-md text-secondary" href="tel:{{ setting('phone_tel') }}">Gọi {{ setting('phone_display') }}</a>
+            @include('partials.contact-links', ['variant' => 'menu'])
         </nav>
     </div>
 </header>

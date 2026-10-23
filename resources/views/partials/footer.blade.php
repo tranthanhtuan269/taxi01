@@ -62,11 +62,7 @@
                 </div>
                 <div class="mt-space-xs">
                     <p class="font-label-sm text-label-sm text-on-surface mb-space-xs">{{ setting('foot_channels_label') }}</p>
-                    <div class="flex items-center gap-space-xs flex-wrap">
-                        @foreach(array_filter(array_map('trim', explode(',', setting('channels')))) as $channel)
-                            <span class="bg-surface-container px-space-xs py-0.5 rounded text-[12px] font-bold text-secondary">{{ $channel }}</span>
-                        @endforeach
-                    </div>
+                    @include('partials.contact-links', ['variant' => 'footer'])
                 </div>
                 <div class="mt-space-xs">
                     <p class="font-label-sm text-label-sm text-on-surface mb-space-xs">{{ setting('foot_payments_label') }}</p>

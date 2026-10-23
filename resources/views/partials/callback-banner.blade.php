@@ -11,10 +11,7 @@
                         <span class="material-symbols-outlined text-[22px]">phone_enabled</span>
                         <span>GỌI ĐẶT XE: {{ setting('phone_display') }}</span>
                     </a>
-                    <a class="px-space-md py-3.5 bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 text-on-primary rounded-xl font-label-md text-label-md backdrop-blur-md transition-colors flex items-center gap-2" href="{{ setting('zalo_url') }}" target="_blank" rel="noopener">
-                        <span class="material-symbols-outlined text-[20px]">chat</span>
-                        <span>Nhắn Zalo Nhận Báo Giá</span>
-                    </a>
+                    @include('partials.contact-links', ['variant' => 'banner'])
                 </div>
             </div>
             <div class="lg:col-span-5 bg-surface-container-lowest text-on-surface p-space-lg rounded-xl shadow-xl">
@@ -31,6 +28,17 @@
                     <div>
                         <label class="block font-label-sm text-label-sm text-on-surface mb-1" for="callbackPhone">Số điện thoại của bạn:</label>
                         <input class="w-full h-12 px-space-sm bg-surface-container-low rounded-lg font-body-sm text-body-sm ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-secondary focus:outline-none" id="callbackPhone" name="callback_phone" placeholder="Nhập số điện thoại (VD: 0905...)" required type="tel" value="{{ old('callback_phone') }}">
+                    </div>
+                    <div>
+                        <span class="block font-label-sm text-label-sm text-on-surface mb-1">Liên hệ qua</span>
+                        <div class="flex flex-wrap gap-2">
+                            @foreach(contact_channels() as $channel)
+                                <label class="cursor-pointer">
+                                    <input class="sr-only peer" name="contact_channel" type="radio" value="{{ $channel['key'] }}" @checked(old('contact_channel', 'zalo') === $channel['key'])>
+                                    <span class="inline-flex px-3 py-1.5 rounded-full bg-surface-container-low font-label-sm text-label-sm text-on-surface-variant peer-checked:bg-secondary peer-checked:text-on-secondary transition-colors">{{ $channel['label'] }}</span>
+                                </label>
+                            @endforeach
+                        </div>
                     </div>
                     <div>
                         <label class="block font-label-sm text-label-sm text-on-surface mb-1" for="callbackNote">Tuyến đường hoặc nhu cầu:</label>

@@ -69,14 +69,18 @@
                 <input class="w-full h-12 px-space-sm bg-surface-container-lowest text-on-surface rounded-lg font-body-sm text-body-sm shadow-sm ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-secondary focus:outline-none transition-all" id="dropoffLocation" name="dropoff" required type="text" value="{{ $dropoffValue }}">
             </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
             <div class="flex flex-col gap-1">
-                <label class="font-label-sm text-label-sm text-on-surface" for="pickupDate">Ngày đón</label>
+                <label class="font-label-sm text-label-sm text-on-surface" for="pickupDate">Ngày đặt</label>
                 <input class="h-12 px-space-sm bg-surface-container-lowest text-on-surface rounded-lg font-body-sm text-body-sm ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-secondary focus:outline-none" id="pickupDate" name="pickup_date" required type="date" min="{{ now()->toDateString() }}" value="{{ old('pickup_date', now()->toDateString()) }}">
             </div>
             <div class="flex flex-col gap-1">
                 <label class="font-label-sm text-label-sm text-on-surface" for="pickupTime">Giờ hạ cánh / Đón</label>
                 <input class="h-12 px-space-sm bg-surface-container-lowest text-on-surface rounded-lg font-body-sm text-body-sm ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-secondary focus:outline-none" id="pickupTime" name="pickup_time" required type="time" value="{{ old('pickup_time', '09:30') }}">
+            </div>
+            <div class="flex flex-col gap-1">
+                <label class="font-label-sm text-label-sm text-on-surface" for="passengers">Số lượng hành khách</label>
+                <input class="h-12 px-space-sm bg-surface-container-lowest text-on-surface rounded-lg font-body-sm text-body-sm ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-secondary focus:outline-none" id="passengers" name="passengers" required type="number" min="1" max="45" inputmode="numeric" value="{{ old('passengers', 1) }}">
             </div>
             <div class="flex flex-col gap-1">
                 <label class="font-label-sm text-label-sm text-on-surface flex items-center justify-between" for="flightNumber">
@@ -107,9 +111,20 @@
                 @endforeach
             </div>
         </div>
+        <div class="flex flex-col gap-2">
+            <span class="font-label-sm text-label-sm text-on-surface">Liên hệ qua</span>
+            <div class="flex flex-wrap gap-2">
+                @foreach(contact_channels() as $channel)
+                    <label class="cursor-pointer">
+                        <input class="sr-only peer" name="contact_channel" type="radio" value="{{ $channel['key'] }}" @checked(old('contact_channel', 'zalo') === $channel['key'])>
+                        <span class="inline-flex px-space-sm py-1.5 rounded-full bg-surface-container-low font-label-sm text-label-sm text-on-surface-variant peer-checked:bg-secondary peer-checked:text-on-secondary transition-colors">{{ $channel['label'] }}</span>
+                    </label>
+                @endforeach
+            </div>
+        </div>
         <div class="grid grid-cols-1 sm:grid-cols-12 gap-space-sm items-center">
             <div class="sm:col-span-7 flex flex-col gap-1">
-                <label class="font-label-sm text-label-sm text-on-surface" for="contactPhone">Số điện thoại / Zalo nhận xác nhận:</label>
+                <label class="font-label-sm text-label-sm text-on-surface" for="contactPhone">Số điện thoại nhận xác nhận:</label>
                 <div class="relative">
                     <span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[14px] font-bold">+84</span>
                     <input class="w-full h-12 pl-12 pr-space-sm bg-surface-container-lowest text-on-surface rounded-lg font-body-sm text-body-sm ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-secondary focus:outline-none" id="contactPhone" name="phone" placeholder="0905 123 456" required type="tel" value="{{ old('phone') }}">
