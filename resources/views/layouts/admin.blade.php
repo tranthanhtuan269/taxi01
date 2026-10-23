@@ -16,7 +16,12 @@
     <div class="min-h-screen lg:grid lg:grid-cols-[260px_1fr]">
         <aside class="bg-[#0f2942] text-white lg:min-h-screen">
             <div class="px-5 py-5 flex items-center justify-between">
-                <a class="nav-brand font-extrabold tracking-tight" href="{{ route('admin.dashboard') }}">NhaTrang<span class="text-sky-300">Ride</span></a>
+                <a class="nav-brand font-extrabold tracking-tight flex items-center gap-2 min-w-0" href="{{ route('admin.dashboard') }}">
+                    @if(logo_url())
+                        <img class="h-8 w-auto max-w-[4.5rem] object-contain bg-white rounded-md px-1 shrink-0" src="{{ logo_url() }}" alt="">
+                    @endif
+                    <span class="truncate">{{ setting('brand_primary', 'NhaTrang') }}<span class="text-sky-300">{{ setting('brand_accent', 'Ride') }}</span></span>
+                </a>
                 <a class="text-xs text-sky-200 lg:hidden" href="{{ route('home') }}">Xem trang</a>
             </div>
             <nav class="px-3 pb-6 flex lg:flex-col gap-1 overflow-x-auto">

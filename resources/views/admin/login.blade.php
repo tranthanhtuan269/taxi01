@@ -10,7 +10,12 @@
 <body class="min-h-screen bg-[#f8f9ff] flex items-center justify-center p-4" style="font-family: 'Be Vietnam Pro', sans-serif;">
     <form class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8" method="POST" action="{{ route('admin.login.submit') }}">
         @csrf
-        <p class="text-sm font-bold text-sky-700" style="font-family: 'Plus Jakarta Sans', sans-serif;">NhaTrang<span class="text-[#006398]">Ride</span></p>
+        <p class="text-sm font-bold text-sky-700 flex items-center gap-2" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            @if(logo_url())
+                <img class="h-8 w-auto max-w-[4.5rem] object-contain" src="{{ logo_url() }}" alt="">
+            @endif
+            {{ setting('brand_primary', 'NhaTrang') }}<span class="text-[#006398]">{{ setting('brand_accent', 'Ride') }}</span>
+        </p>
         <h1 class="text-2xl font-extrabold text-[#0f2942] mt-1 mb-6" style="font-family: 'Plus Jakarta Sans', sans-serif;">Đăng nhập quản trị</h1>
         @if($errors->any())
             <p class="mb-4 rounded-lg bg-red-50 text-red-700 px-3 py-2 text-sm">{{ $errors->first() }}</p>

@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', setting('meta_title', 'NhaTrangRide'))</title>
+    @if(logo_url())
+        <link rel="icon" href="{{ logo_url() }}">
+    @endif
     <meta name="description" content="@yield('description', setting('meta_description'))">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

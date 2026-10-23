@@ -19,6 +19,13 @@ function setting(string $key, string $default = ''): string
     return $value === null ? $default : (string) $value;
 }
 
+function logo_url(): string
+{
+    $path = setting('logo_path');
+
+    return $path !== '' ? asset('storage/'.$path) : '';
+}
+
 function money(int|string|null $amount, string $suffix = 'đ'): string
 {
     if ($amount === null || $amount === '') {

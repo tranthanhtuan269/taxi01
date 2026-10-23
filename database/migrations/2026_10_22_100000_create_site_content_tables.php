@@ -39,7 +39,7 @@ return new class extends Migration
             $table->string('luggage_icon')->default('luggage');
             $table->string('highlight');
             $table->unsignedInteger('price_from')->default(0);
-            $table->string('image_url')->nullable();
+            $table->text('image_url')->nullable();
             $table->string('image_path')->nullable();
             $table->string('badge')->nullable();
             $table->string('badge_style')->default('primary');
