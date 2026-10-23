@@ -3,7 +3,7 @@
 @section('content')
     @include('partials.hero')
     @include('partials.pricing')
-    @include('partials.fleet')
+    @include('partials.destinations')
     @include('partials.commitments')
     @include('partials.testimonials')
     @include('partials.faq')

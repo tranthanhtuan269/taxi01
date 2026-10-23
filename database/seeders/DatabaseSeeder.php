@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Commitment;
+use App\Models\Destination;
 use App\Models\Faq;
 use App\Models\FareRoute;
 use App\Models\FareRoutePrice;
@@ -33,6 +34,7 @@ class DatabaseSeeder extends Seeder
         Commitment::query()->delete();
         Promotion::query()->delete();
         Page::query()->delete();
+        Destination::query()->delete();
         Schema::enableForeignKeyConstraints();
 
         $this->settings();
@@ -41,6 +43,7 @@ class DatabaseSeeder extends Seeder
         $this->routes();
         $this->stories();
         $this->pages();
+        $this->destinations();
 
         User::updateOrCreate(
             ['email' => 'admin@nhatrangride.vn'],
@@ -55,11 +58,11 @@ class DatabaseSeeder extends Seeder
             'brand_accent' => 'Ride',
             'meta_title' => 'NhaTrangRide - Taxi & Tour Du Lịch Nha Trang',
             'meta_description' => 'Taxi Nha Trang đón nhanh 5 phút, đưa đón sân bay Cam Ranh trọn gói và tour trong ngày. Giá niêm yết, xe đời mới, phục vụ 24/7.',
-            'phone_display' => '0905.123.456',
-            'phone_tel' => '0905123456',
-            'zalo_url' => 'https://zalo.me/0905123456',
+            'phone_display' => '+84 794 466 093',
+            'phone_tel' => '+84794466093',
+            'zalo_url' => 'https://zalo.me/0794466093',
             'kakao_url' => '',
-            'whatsapp_url' => 'https://wa.me/84905123456',
+            'whatsapp_url' => 'https://wa.me/84794466093',
             'wechat_url' => '',
             'email' => 'booking@nhatrangride.vn',
             'address' => 'Trụ sở: 120 Trần Phú, Lộc Thọ, TP. Nha Trang, Khánh Hòa',
@@ -95,6 +98,9 @@ class DatabaseSeeder extends Seeder
             'fleet_kicker' => 'ĐỘI XE DU LỊCH 2022 - 2024',
             'fleet_title' => 'Đội Xe Đời Mới – Sạch Sẽ, Mát Lạnh, Không Mùi Say Xe',
             'fleet_body' => '100% phương tiện được vệ sinh khử khuẩn sau mỗi chuyến đi, trang bị wifi, nước suối và khăn lạnh miễn phí.',
+            'destinations_kicker' => 'ĐIỂM DU LỊCH PHỔ BIẾN',
+            'destinations_title' => 'Các Điểm Du Lịch Được Đặt Xe Nhiều Nhất',
+            'destinations_body' => 'Một vài gợi ý lộ trình ngắn quanh Nha Trang và Cam Ranh. Đọc bài rồi đặt xe thẳng tới điểm đó.',
             'why_kicker' => 'UY TÍN HÀNG ĐẦU',
             'why_title' => '4 Cam Kết Vàng Giữ Chân Du Khách Mười Năm Qua',
             'why_body' => 'Chúng tôi hiểu rằng một chuyến nghỉ dưỡng trọn vẹn bắt đầu ngay từ khoảnh khắc bạn bước xuống sân bay và kết thúc với nụ cười hài lòng khi trở về nhà.',
@@ -257,6 +263,22 @@ class DatabaseSeeder extends Seeder
                 ],
             ],
             [
+                'title' => 'Sân bay Cam Ranh → Các resort Bãi Dài',
+                'eyebrow' => 'Cự ly ~20km • Khoảng 25 phút',
+                'icon' => 'beach_access',
+                'description' => 'Đón tại sảnh sân bay Cam Ranh, đưa thẳng các resort ven Bãi Dài. Giá trọn gói, đã gồm bến bãi.',
+                'pickup_default' => 'Sân bay Cam Ranh (CXR)',
+                'dropoff_default' => 'Các resort Bãi Dài',
+                'category' => 'airport',
+                'sort_order' => 2,
+                'prices' => [
+                    ['Xe 4 chỗ Sedan (Vios/Accent):', 180000, null, false],
+                    ['Xe 7 chỗ SUV (Xpander/Innova):', 230000, null, false],
+                    ['Xe 16 chỗ Solati / Transit:', 450000, null, false],
+                    ['VIP Dcar Limousine 9 chỗ:', 400000, null, true],
+                ],
+            ],
+            [
                 'title' => 'Nha Trang ⇄ VinWonders / Cảng Cầu Đá',
                 'eyebrow' => 'Cự ly ~7km • Khoảng 15 phút',
                 'icon' => 'attractions',
@@ -264,7 +286,7 @@ class DatabaseSeeder extends Seeder
                 'pickup_default' => 'Khách sạn Nha Trang',
                 'dropoff_default' => 'Cảng Vinpearl Cáp Treo',
                 'category' => 'transfer',
-                'sort_order' => 2,
+                'sort_order' => 3,
                 'prices' => [
                     ['Xe 4 chỗ Sedan:', 100000, null, false],
                     ['Xe 7 chỗ SUV:', 130000, null, false],
@@ -279,7 +301,7 @@ class DatabaseSeeder extends Seeder
                 'pickup_default' => 'Khách sạn trung tâm',
                 'dropoff_default' => 'City Tour Nha Trang 4 Tiếng',
                 'category' => 'tour',
-                'sort_order' => 3,
+                'sort_order' => 4,
                 'prices' => [
                     ['Xe 4 chỗ (4 giờ linh hoạt):', 350000, null, false],
                     ['Xe 7 chỗ (4 giờ gia đình):', 450000, null, false],
@@ -294,7 +316,7 @@ class DatabaseSeeder extends Seeder
                 'pickup_default' => 'Nha Trang',
                 'dropoff_default' => 'Khu du lịch Dốc Lết',
                 'category' => 'tour',
-                'sort_order' => 4,
+                'sort_order' => 5,
                 'prices' => [
                     ['Xe 4 chỗ (Khứ hồi trong ngày):', 600000, null, false],
                     ['Xe 7 chỗ (Khứ hồi trong ngày):', 750000, null, false],
@@ -309,25 +331,12 @@ class DatabaseSeeder extends Seeder
                 'pickup_default' => 'Nha Trang',
                 'dropoff_default' => 'TP. Đà Lạt (Lâm Đồng)',
                 'category' => 'intercity',
-                'sort_order' => 5,
+                'sort_order' => 6,
                 'prices' => [
                     ['Đi Đà Lạt (4 chỗ Sedan):', 1100000, null, false],
                     ['Đi Đà Lạt (7 chỗ SUV):', 1350000, null, false],
                     ['Đi Mũi Né - Phan Thiết:', 1500000, null, false],
                 ],
-            ],
-            [
-                'title' => 'Bạn Có Lộ Trình Riêng Biệt?',
-                'eyebrow' => null,
-                'icon' => 'route',
-                'description' => 'Đi công tác, đánh golf tại KN Cam Ranh, Vinpearl Golf, chụp ảnh cưới hay thuê xe theo ngày có lái xe... Đội ngũ điều hành báo giá tốt nhất chỉ sau 60 giây.',
-                'pickup_default' => 'Nha Trang',
-                'dropoff_default' => 'Lộ trình theo yêu cầu',
-                'category' => 'transfer',
-                'is_inquiry' => true,
-                'inquiry_note' => 'Phản hồi Zalo tức thì kể cả lễ Tết',
-                'sort_order' => 6,
-                'prices' => [],
             ],
         ];
 
@@ -435,6 +444,64 @@ class DatabaseSeeder extends Seeder
                 'sort_order' => $i + 1,
                 'is_active' => true,
             ]);
+        }
+    }
+
+    private function destinations(): void
+    {
+        $articles = [
+            [
+                'slug' => 'vinwonders-nha-trang',
+                'title' => 'VinWonders Nha Trang',
+                'eyebrow' => 'Đảo Hòn Tre • Cáp treo vượt biển',
+                'excerpt' => 'Công viên trên đảo Hòn Tre, sang đảo bằng cáp treo. Nên đi buổi sáng nếu muốn chơi trọn ngày và xem show tối.',
+                'body' => "VinWonders nằm trên đảo Hòn Tre, phía đông vịnh Nha Trang. Khách ở phố biển thường đi xe đến nhà ga cáp treo, rồi lên cáp sang đảo. Từ khách sạn trung tâm ra ga thường mất khoảng 10–20 phút, tùy điểm đón và giờ tan tầm.\n\nTrong công viên có trò chơi cảm giác mạnh, thủy cung và show buổi tối. Gia đình có trẻ nhỏ nên chọn xe 7 chỗ cho thoáng đồ bơi, xe đẩy và mũ. Nếu về muộn sau show, đặt trước chiều về để không phải đứng đợi xe ngoài ga.\n\nNhaTrangRide đón tại sảnh khách sạn hoặc sân bay và trả đúng nhà ga cáp treo. Giá theo hạng xe đã niêm yết, chưa gồm vé cáp treo.",
+                'image_url' => 'images/destinations/vinwonders.jpg',
+                'icon' => 'attractions',
+                'pickup_default' => 'Trung tâm Nha Trang',
+                'dropoff_default' => 'Cáp treo VinWonders Nha Trang',
+                'sort_order' => 1,
+            ],
+            [
+                'slug' => 'thap-ba-ponagar',
+                'title' => 'Tháp Bà Ponagar',
+                'eyebrow' => 'Di tích Chăm • Cách phố biển vài phút',
+                'excerpt' => 'Quần thể tháp Chăm bên sông Cái, tham quan nhanh trong 1–2 giờ. Dễ ghép với phố biển trong cùng một buổi.',
+                'body' => "Tháp Bà Ponagar là nhóm tháp Chăm nhìn xuống sông Cái, ở phía bắc trung tâm Nha Trang. Từ khách sạn đường Trần Phú ra tháp thường chỉ khoảng 10 phút. Bậc thang khá cao, nên mang giày bệt và nước uống.\n\nKhu vực có tháp chính thờ bà Ponagar, các tháp nhỏ và hàng quán dưới chân đồi. Buổi sáng sớm mát và ít đoàn hơn buổi trưa. Sau khi tham quan, nhiều khách ghé chợ Đầm hoặc về thẳng khách sạn tắm biển.\n\nXe trả gần cổng. Tài xế có thể chờ nếu quý khách báo trước giờ về. Nhóm 3–4 người đi sedan là đủ; gia đình đông hơn nên chọn xe 7 chỗ.",
+                'image_url' => 'images/destinations/ponagar.jpg',
+                'icon' => 'account_balance',
+                'pickup_default' => 'Trung tâm Nha Trang',
+                'dropoff_default' => 'Tháp Bà Ponagar',
+                'sort_order' => 2,
+            ],
+            [
+                'slug' => 'bai-dai-cam-ranh',
+                'title' => 'Các resort Bãi Dài',
+                'eyebrow' => 'Cam Ranh • Sát sân bay',
+                'excerpt' => 'Dải resort cát trắng phía nam sân bay Cam Ranh. Đón tại sảnh ga và về thẳng cổng resort, không cần vòng vào phố Nha Trang.',
+                'body' => "Bãi Dài là cung bờ biển dài ở bán đảo Cam Ranh, nơi tập trung nhiều resort. Từ sân bay Cam Ranh về khu này thường khoảng 20 km, chừng 25 phút nếu đường thoáng. Khách nghỉ tại Bãi Dài không cần vào trung tâm Nha Trang ngay trong ngày đáp.\n\nTài xế đón ở sảnh đến, theo dõi giờ hạ cánh theo mã chuyến bay và chạy thẳng tới cổng resort. Nên nhắn tên resort khi đặt xe để xe dừng đúng lối vào, vì các khu nghỉ nằm trải dọc biển.\n\nVali vừa xe 4 chỗ. Nhóm gia đình hoặc nhiều vali nên chọn xe 7 chỗ. Giá trọn gói đã gồm bến bãi sân bay.",
+                'image_url' => 'images/destinations/bai-dai.jpg',
+                'icon' => 'beach_access',
+                'pickup_default' => 'Sân bay Cam Ranh (CXR)',
+                'dropoff_default' => 'Các resort Bãi Dài',
+                'sort_order' => 3,
+            ],
+            [
+                'slug' => 'bien-doc-let',
+                'title' => 'Biển Dốc Lết',
+                'eyebrow' => 'Ninh Hòa • Đi trong ngày',
+                'excerpt' => 'Bãi biển nông, nước trong ở Ninh Hòa, khoảng 45 phút từ Nha Trang. Hợp lịch tắm biển buổi sáng rồi về phố chiều.',
+                'body' => "Dốc Lết thuộc Ninh Hòa, phía bắc Nha Trang. Nước nông, cát thoải, thường yên hơn bãi Trần Phú vào cuối tuần. Từ trung tâm đi theo quốc lộ, thời gian khoảng 40–50 phút.\n\nĐây là điểm đi về trong ngày: xuất phát sau bữa sáng, tắm biển và ăn trưa tại chỗ, rồi về khách sạn trước tối. Nên mang đồ bơi, kem chống nắng và một bộ đồ khô vì trên xe sẽ ngồi khá lâu sau khi tắm.\n\nĐặt xe khứ hồi để tài xế chờ theo giờ đã chốt, khỏi phải tìm xe lẻ ở bãi. Sedan hợp cặp đôi; gia đình có trẻ và đồ picnic nên dùng xe 7 chỗ.",
+                'image_url' => 'images/destinations/doc-let.jpg',
+                'icon' => 'waves',
+                'pickup_default' => 'Trung tâm Nha Trang',
+                'dropoff_default' => 'Biển Dốc Lết',
+                'sort_order' => 4,
+            ],
+        ];
+
+        foreach ($articles as $article) {
+            Destination::create($article + ['is_active' => true]);
         }
     }
 

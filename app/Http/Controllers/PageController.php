@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Destination;
 use App\Models\Page;
 
 class PageController extends SiteController
@@ -34,6 +35,13 @@ class PageController extends SiteController
     public function booking()
     {
         return view('site.booking', $this->siteData());
+    }
+
+    public function destination(Destination $destination)
+    {
+        abort_unless($destination->is_active, 404);
+
+        return view('site.destination', $this->siteData(['destination' => $destination]));
     }
 
     public function show(string $slug)

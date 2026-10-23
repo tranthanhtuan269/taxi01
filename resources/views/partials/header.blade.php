@@ -33,17 +33,6 @@
                 </select>
                 <span class="material-symbols-outlined pointer-events-none absolute right-space-xs top-1/2 -translate-y-1/2 text-on-surface-variant text-[16px]">expand_more</span>
             </div>
-            <a class="hidden lg:flex items-center gap-space-xs bg-surface-container-low hover:bg-surface-container px-space-sm py-space-xs rounded-full transition-colors" href="tel:{{ setting('phone_tel') }}">
-                <span class="relative flex h-2.5 w-2.5">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
-                </span>
-                <span class="material-symbols-outlined text-secondary text-[18px]">call</span>
-                <span class="font-label-sm text-label-sm text-on-surface font-bold">{{ setting('phone_display') }}</span>
-            </a>
-            <div class="hidden xl:block">
-                @include('partials.contact-links', ['variant' => 'header'])
-            </div>
             <a class="inline-flex items-center justify-center bg-tertiary-fixed hover:bg-tertiary-fixed-dim text-on-tertiary-fixed font-label-md text-label-md px-space-md py-space-sm rounded-lg transition-colors shadow-sm font-bold" href="{{ route('booking') }}">Đặt xe ngay</a>
             <a class="w-8 h-8 rounded-full bg-primary flex items-center justify-center" href="{{ route('admin.login') }}" title="Quản trị">
                 <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>

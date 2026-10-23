@@ -28,7 +28,7 @@ function logo_url(): string
 
 function contact_channels(): array
 {
-    $digits = preg_replace('/\D+/', '', setting('phone_tel', '0905123456')) ?: '0905123456';
+    $digits = preg_replace('/\D+/', '', setting('phone_tel', '84794466093')) ?: '84794466093';
     $intl = str_starts_with($digits, '0') ? '84'.substr($digits, 1) : $digits;
 
     $whatsapp = setting('whatsapp_url');

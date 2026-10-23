@@ -15,7 +15,7 @@
             <div class="flex flex-col gap-space-sm">
                 <h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">{{ setting('foot_routes_title') }}</h3>
                 <ul class="flex flex-col gap-space-xs font-body-sm text-body-sm">
-                    @foreach((isset($routes) ? $routes : collect())->where('is_inquiry', false)->take(5) as $routeItem)
+                    @foreach((isset($routes) ? $routes : collect())->where('is_inquiry', false) as $routeItem)
                         @php
                             $href = match ($routeItem->category) {
                                 'airport' => route('airport'),

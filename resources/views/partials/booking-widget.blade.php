@@ -127,7 +127,7 @@
                 <label class="font-label-sm text-label-sm text-on-surface" for="contactPhone">Số điện thoại nhận xác nhận:</label>
                 <div class="relative">
                     <span class="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[14px] font-bold">+84</span>
-                    <input class="w-full h-12 pl-12 pr-space-sm bg-surface-container-lowest text-on-surface rounded-lg font-body-sm text-body-sm ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-secondary focus:outline-none" id="contactPhone" name="phone" placeholder="0905 123 456" required type="tel" value="{{ old('phone') }}">
+                    <input class="w-full h-12 pl-12 pr-space-sm bg-surface-container-lowest text-on-surface rounded-lg font-body-sm text-body-sm ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-secondary focus:outline-none" id="contactPhone" name="phone" placeholder="0794 466 093" required type="tel" value="{{ old('phone') }}">
                 </div>
             </div>
             <div class="sm:col-span-5 flex flex-col justify-end">

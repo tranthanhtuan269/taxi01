@@ -113,6 +113,7 @@
         @yield('content')
     </main>
     @include('partials.footer')
+    @include('partials.contact-rail')
     @include('partials.success-modal')
     @include('partials.scripts')
 </body>

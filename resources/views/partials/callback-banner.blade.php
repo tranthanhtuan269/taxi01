@@ -27,7 +27,7 @@
                     @csrf
                     <div>
                         <label class="block font-label-sm text-label-sm text-on-surface mb-1" for="callbackPhone">Số điện thoại của bạn:</label>
-                        <input class="w-full h-12 px-space-sm bg-surface-container-low rounded-lg font-body-sm text-body-sm ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-secondary focus:outline-none" id="callbackPhone" name="callback_phone" placeholder="Nhập số điện thoại (VD: 0905...)" required type="tel" value="{{ old('callback_phone') }}">
+                        <input class="w-full h-12 px-space-sm bg-surface-container-low rounded-lg font-body-sm text-body-sm ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-secondary focus:outline-none" id="callbackPhone" name="callback_phone" placeholder="Nhập số điện thoại (VD: 0794 466 093)" required type="tel" value="{{ old('callback_phone') }}">
                     </div>
                     <div>
                         <span class="block font-label-sm text-label-sm text-on-surface mb-1">Liên hệ qua</span>

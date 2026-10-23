@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter-lg">
-            @foreach($routes as $routeItem)
+            @foreach($routes->where('is_inquiry', false) as $routeItem)
                 @include('partials.route-card', ['routeItem' => $routeItem])
             @endforeach
         </div>

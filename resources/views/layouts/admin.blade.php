@@ -38,6 +38,7 @@
                     ['admin.faqs.index', 'Câu hỏi', 'admin.faqs.*'],
                     ['admin.commitments.index', 'Cam kết', 'admin.commitments.*'],
                     ['admin.pages.index', 'Trang tĩnh', 'admin.pages.*'],
+                    ['admin.destinations.index', 'Điểm du lịch', 'admin.destinations.*'],
                 ] as [$href, $label, $match])
                     <a href="{{ route($href) }}" class="whitespace-nowrap rounded-lg px-3 py-2 text-sm {{ request()->routeIs($match) ? 'bg-white/15 font-semibold' : 'text-slate-200 hover:bg-white/10' }}">{{ $label }}</a>
                 @endforeach

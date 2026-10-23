@@ -19,7 +19,7 @@ return new class extends Migration
         });
 
         $defaults = [
-            'whatsapp_url' => 'https://wa.me/84905123456',
+            'whatsapp_url' => 'https://wa.me/84794466093',
             'kakao_url' => '',
             'wechat_url' => '',
         ];
